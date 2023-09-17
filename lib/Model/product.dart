@@ -12,19 +12,18 @@ class ItemModel {
   int limit;
 
   factory ItemModel.fromJson(Map<String, dynamic> json) => ItemModel(
-        products: List<Product>.from(
-            json["products"].map((x) => Product.fromJson(x))),
-        total: json["total"],
-        skip: json["skip"],
-        limit: json["limit"],
-      );
+    products: List<Product>.from(json["products"].map((e) => Product.fromJson(e))),
+    total: json["total"],
+    skip: json["skip"],
+    limit: json["limit"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "products": List<dynamic>.from(products.map((x) => x.toJson())),
-        "total": total,
-        "skip": skip,
-        "limit": limit,
-      };
+    "products": List<dynamic>.from(products.map((e) => e.toJson())),
+    "total": total,
+    "skip": skip,
+    "limit": limit,
+  };
 }
 
 class Product {
@@ -55,30 +54,30 @@ class Product {
   List<String> images;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["id"],
-        title: json["title"],
-        description: json["description"],
-        price: json["price"],
-        discountPercentage: json["discountPercentage"]?.toDouble(),
-        rating: json["rating"]?.toDouble(),
-        stock: json["stock"],
-        brand: json["brand"],
-        category: json["category"],
-        thumbnail: json["thumbnail"],
-        images: List<String>.from(json["images"].map((x) => x)),
-      );
+    id: json["id"],
+    title: json["title"],
+    description: json["description"],
+    price: json["price"],
+    discountPercentage: json["discountPercentage"]?.toDouble(),
+    rating: json["rating"]?.toDouble(),
+    stock: json["stock"],
+    brand: json["brand"],
+    category: json["category"],
+    thumbnail: json["thumbnail"],
+    images: List<String>.from(json["images"].map((e) => e)),
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "description": description,
-        "price": price,
-        "discountPercentage": discountPercentage,
-        "rating": rating,
-        "stock": stock,
-        "brand": brand,
-        "category": category,
-        "thumbnail": thumbnail,
-        "images": List<dynamic>.from(images.map((x) => x)),
-      };
+    "id": id,
+    "title": title,
+    "description": description,
+    "price": price,
+    "discountPercentage": discountPercentage,
+    "rating": rating,
+    "stock": stock,
+    "brand": brand,
+    "category": category,
+    "thumbnail": thumbnail,
+    "images": List<dynamic>.from(images.map((e) => e)),
+  };
 }
