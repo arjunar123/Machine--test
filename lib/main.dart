@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:productapp/product_details.dart';
 
+
 import 'home.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       routes: {
-        '/prodetail': (context) => const ProductDetailScreen(),
+        '/prodetail' : (context) => const ProductDetailScreen(),
       },
       theme: ThemeData(
         // This is the theme of your application.
@@ -32,4 +34,5 @@ class MyApp extends StatelessWidget {
       home: const Home(),
     );
   }
+
 }

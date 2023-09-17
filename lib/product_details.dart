@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -10,6 +11,7 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   ProductArguments? product;
+
   String image = "",
       title = "",
       description = "",
@@ -25,13 +27,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(product!.title,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w900),),
-            SizedBox(height: 10,),
-            Image(image: NetworkImage(product!.image,),height: 300,fit: BoxFit.contain,),
-            Text(product!.description,style: TextStyle(fontSize: 15,fontWeight: FontWeight.w800),),
-            SizedBox(height: 10,),
-            Text("Rs ${product!.price}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w800),),
-            SizedBox(height: 10,),
+            Text(product!.title,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w900),),
+            const SizedBox(height: 10,),
+           // Image(image: NetworkImage(product!.image,),height: 300,fit: BoxFit.contain,),
+            SizedBox(
+              height: 300,
+                child: CarouselSlider(
+
+                  options: CarouselOptions(
+                    autoPlay: true
+                  ),
+                  items: product?.imageList
+                      .map((item) => Center(child: Image(image: NetworkImage(item),fit: BoxFit.fill,)))
+                      .toList(),
+                )),
+            const SizedBox(height: 20,),
+            Text("Description : ${product!.description}",style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w800),),
+            const SizedBox(height: 10,),
+            Text("Brand : ${product!.brand}",style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w800),),
+            const SizedBox(height: 10,),
+            Text("Rs ${product!.price}",style: const TextStyle(fontSize: 15,fontWeight: FontWeight.w800),),
+            const SizedBox(height: 10,),
           ],
         ),
       ),
@@ -44,12 +60,17 @@ class ProductArguments {
   String title;
   String description;
   String image;
+  List<String> imageList;
   String price;
+  String brand;
 
   ProductArguments(
       {required this.id,
       required this.title,
       required this.description,
       required this.image,
-      required this.price});
+        required this.imageList,
+      required this.price,
+      required this.brand
+      });
 }
